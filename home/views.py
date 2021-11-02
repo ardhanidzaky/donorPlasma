@@ -53,7 +53,7 @@ def login_request(request):
 
 @login_required(login_url='/home/login')
 def logout_request(request):
-    return render(logout(request), 'logout.html')
+    return render(logout(request), 'home.html')
     # Redirect to a success page.
 
 @login_required(login_url='/home/login')
