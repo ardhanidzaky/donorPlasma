@@ -1,0 +1,82 @@
+<DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                $.ajax({
+                    url: encodeURI(`/cari-donor/all-prov`),
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response){
+                        let len = response.length;
+                        for(let i = 0; i<len; i++){
+                            let name = response[i].pk;
+                            $("#provinsi").append(`<option value='${name}'>${name}</option>`);
+                        }
+                    }
+                });
+                $('#provinsi').change(function(){
+                    let prov = $(this).val();
+                    if(prov == "") {
+                        $("#kota").attr('aria-label', 'Disabled select');
+                        $("#kota").prop('disabled', true);
+                        $("#defChoiceKota").prop('selected', true);
+                        return;
+                    }
+                    $.ajax({
+                        url: encodeURI(`/cari-donor/kota-by-prov?provinsi=${prov}`),
+                        type: 'get',
+                        dataType: 'json',
+                        success: function(response){
+                            let len = response.length;
+                            $("#kota").empty();
+                            $("#kota").append("<option id=\"defChoiceKota\" value=\"\" selected>Pilih Kota</option>");
+                            for(let i = 0; i<len; i++){
+                                let name = response[i].fields.nama;
+                                $("#kota").append(`<option value='${name}'>${name}</option>`);
+                            }
+                            $("#kota").attr('aria-label', 'select');
+                            $("#kota").prop('disabled', false);
+                        }
+                    });
+                });
+            });
+        </script>
+        <style>
+            .center {
+                width: min-content;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form class="center">
+                <label style="margin-bottom: 0px; margin-top: 10px;" for="provinsi">Provinsi:</label>
+                <select name="provinsi" id="provinsi" required>
+                    <option value="" selected>Pilih Provinsi</option>
+                </select>
+                <br>
+                <label style="margin-bottom: 0px; margin-top: 3px;" for="kota">Kota:</label>
+                <select name="kota" id="kota" class="form-select" aria-label="Disabled select" disabled required>
+                    <option selected>Pilih provinsi terlebih dahulu</option>
+                </select>
+                <br>
+                <label style="margin-bottom: 0px; margin-top: 3px;" for="goldar">Golongan darah:</label>
+                <select style="margin-bottom: 0px; margin-top: 10px;" name="goldar" id="goldar" required>
+                    <option value="all" selected> Semua </option>
+                    <option value="A"> A </option>
+                    <option value="B"> B </option>
+                    <option value="AB"> AB </option>
+                    <option value="O"> O </option>
+                </select>
+                <br>
+                <input style="margin-bottom: 0px; margin-top: 10px;" type="submit" value="Cari" class="btn btn-dark center">
+            </form>
+        </div>
+    </body>
+</html>

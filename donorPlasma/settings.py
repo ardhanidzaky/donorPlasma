@@ -52,6 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'home',
+    'formCariDonor',
+    'cariDonor',
+    'faq',
+    'listUDD',
+    'pendonor',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

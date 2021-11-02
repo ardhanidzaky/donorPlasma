@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'simpleCentering.css'%}">
+    <link rel="stylesheet" href="{%static 'navbar.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <title>Daftar Donor</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/tryLogin">Page Harus Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/login">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/logout">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/daftar">Daftar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cari-donor">Cari Donor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/informasiUDD">Informasi UDD</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/faq">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 style="margin: 20px;">Daftar Sebagai Pendonor</h1>
+    <hr>
+    {% load crispy_forms_tags %}
+    <div id="alert-box"></div>
+    <form enctype="multipart/form-data" method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <br>
+        <button type=" submit" class="btn btn-danger">Daftar</button>
+    </form>
+</body>
+<script>
+    $(document).ready(function () {
+        $("form").submit(function () {
+            alert("Berhasil Mendaftar")
+        })
+    })
+</script>
+
+</html>

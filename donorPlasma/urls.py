@@ -16,9 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from home.views import home as homePage
+from formCariDonor.views import *
+from listUDD.views import *
+from faq.views import *
+from cariDonor.views import *
+from pendonor.views import *
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
+    path('FormCariDonor/', include('formCariDonor.urls')),
+    # path('informasiUDD/', include('listUDD.urls')),
+    # path('faq/', include ('faq.urls')),
+    path('pendonor/', include ('pendonor.urls')),
+    path('cari-donor/', include ('cariDonor.urls')),
     re_path(r'^$', homePage, name='homePage')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

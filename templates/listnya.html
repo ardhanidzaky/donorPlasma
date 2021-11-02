@@ -1,0 +1,48 @@
+{% include "navIn.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+        <link rel="stylesheet" href="{%static 'simpleCentering.css'%}">
+        <link rel="stylesheet" href="{%static 'navbar.css'%}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>List Pencari Donor - SU only</title>
+  </head>
+  <style>
+       table, td, th {
+      border: 1px solid black;
+      color: #2f4129;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1 style="color: #E45C5E;">List Pencari Donor</h1>
+    <br>
+    <table style="border-collapse:collapse; width:100%;">
+        <tr>
+          <th>Nama</th>
+          <th>NIK</th>
+          <th>Tanggal Lahir</th>
+          <th>Nomor Telepon</th>
+          <th>GolDar</th>
+          <th>Provinsi</th>
+          <th>Kota</th>
+          <th>Edit</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+        <td> {{ i.nama }} </td>
+        <td> {{ i.NIK }} </td>
+        <td> {{ i.tanggal_Lahir }} </td>
+        <td> {{ i.nomor_Telepon }} </td>
+        <td> {{ i.golongan_Darah }} </td>
+        <td> {{ i.provinsi.nama }} </td>
+        <td> {{ i.kota.nama }} </td>
+        <td><a href='/FormCariDonor/EditData/{{ i.id }}'><button>Edit</button></td></a>
+        </tr>
+        {% endfor %}
+    </table>
+  </body>
+</html>
+

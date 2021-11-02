@@ -1,0 +1,74 @@
+{% include "navIn.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        td, th {
+        color: black;
+        text-align:left;
+        font-size: 25px;
+        }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .test{
+            text-align:center;
+        }
+
+    </style>
+    <head>
+        <meta charset="UTF-8">
+		{% load static %}
+        <link rel="stylesheet" href="{%static 'simpleCentering.css'%}">
+        <link rel="stylesheet" href="{%static 'navbar.css'%}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<title>Informasi Pencari Donor</title>
+    </head>
+    <body>
+        <h1 style="margin: 20px;">Informasi Pencari Donor</h1>
+        <hr>
+        <table style="width:max-content; border-collapse:initial;">
+            <tr>
+                <td>Nama</td>
+                <td>&nbsp;&nbsp;: {{ nama }}</td>
+            </tr>
+            <tr>
+                <td>NIK</td>
+                <td>&nbsp;&nbsp;: {{ nik }}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Lahir</td>
+                <td>&nbsp;&nbsp;: {{ dob }}</td>
+            </tr>
+            <tr>
+                <td>Nomor Telepon</td>
+                <td>&nbsp;&nbsp;: {{ nohp }}</td>
+            </tr>
+            <tr>
+                <td>Golongan Darah</td>
+                <td>&nbsp;&nbsp;: {{ goldar }}</td>
+            </tr>
+              <tr>
+                <td>Provinsi</td>
+                <td>&nbsp;&nbsp;: {{ provinsi }}</td>
+            </tr>
+            <tr>
+                <td>Kota</td>
+                <td>&nbsp;&nbsp;: {{ kota }}</td>
+            </tr>
+        </table>
+        <br>
+        <div class="test">
+            <a href="/FormCariDonor/EditData/{{ idnya }}">
+                <button class="btn btn-danger">Ubah Data</button>
+            </a>
+            <a href="/FormCariDonor/DeleteData/{{ idnya }}">
+                <button class="btn btn-danger">Batal</button>
+            </a>
+            <a href="/cari-donor/?provinsi={{ provinsi }}&kota={{ kota }}&goldar={{ goldar }}">
+                <button class="btn btn-danger">Lihat Calon Pendonor</button>
+            </a>
+        </div>
+    </body>
+
+</html>

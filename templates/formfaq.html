@@ -1,0 +1,47 @@
+{% include "navIn.html" %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		{% load static %}
+		<link rel="stylesheet" href="{%static 'navbar.css'%}">
+        <link rel="stylesheet" href="{% static 'formfaq.css' %}" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
+		<title>Frequently Ask Question</title>
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+	</head>
+	<style>
+	</style>
+	<body>
+          
+          <section id="contact">
+            <div class="sectionheader">	<h1>ADD FREQUENTLY ASK QUESTION</h1></div>
+            <article>
+            <p>Put your new Frequently Ask Question here.</p>
+            
+                
+                    <label for="checkcontact" class="contactbutton"><div class="mail"></div></label>
+                    <input id="checkcontact" type="checkbox">
+            
+                    
+                     <form action = "" method = "POST" class="contactform">
+                        {% csrf_token %}
+                        <p class="input_wrapper"><input type="text" name="question" value=""  id ="question">
+                            <label for="question">QUESTION</label></p>
+                        <p class="input_wrapper"><input type="text" name="answer" value=""  id ="answer">
+                            <label for="answer">ANSWER</label></p>
+                        
+                        <p class="submit_wrapper"><input type="submit" value="ADD NEW FAQ"></p>			
+                    </form>
+            </article>
+        </section>
+          
+    </body>
+		
+</html>
+
+		
+          

@@ -1,0 +1,57 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            h3 {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'cari-donor-filter.html' %}
+        <div style="margin-top: 50px;">
+            <div>
+            {% if pendonor %}
+                {% if goldar == "all" %}
+                    <h3> Pendonor di {{kota}} </h3>
+                {% else %}
+                    <h3> Pendonor di {{kota}} dengan golongan darah {{goldar}} </h3>
+                {% endif %}
+                <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Tanggal Lahir</th>
+                        <th scope="col">Golongan Darah</th>
+                        <th scope="col">No HP</th>
+                        <th scope="col">Terakhir Mendonor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for donor in pendonor %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td> {{donor.nama}} </td>
+                        <td> {{donor.tanggal_lahir}} </td>
+                        <td> {{donor.golongan_darah}}{{donor.rhesus}} </td>
+                        <td> {{donor.nomor_hp}} </td>
+                        <td> {{donor.tanggal_terakhir_mendonor}} </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            {% else %}
+                {% if goldar == "all" %}
+                    <h3>Maaf tidak ditemukan pendonor di {{kota}}. </h3>
+                {% else %}
+                    <h3>Maaf tidak ditemukan pendonor di {{kota}} dengan golongan darah {{goldar}}. </h3>
+                {% endif %}
+            {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
