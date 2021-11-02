@@ -29,8 +29,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('FormCariDonor/', include('formCariDonor.urls')),
-    # path('informasiUDD/', include('listUDD.urls')),
-    # path('faq/', include ('faq.urls')),
+    path('informasiUDD/', include('listUDD.urls')),
+    path('faq/', include ('faq.urls')),
     path('pendonor/', include ('pendonor.urls')),
     path('cari-donor/', include ('cariDonor.urls')),
     re_path(r'^$', homePage, name='homePage')
