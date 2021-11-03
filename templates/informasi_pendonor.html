@@ -3,58 +3,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info Pendonor</title>
-    {% load static %}
-    <link rel="stylesheet" href="{%static 'simpleCentering.css'%}">
-    <link rel="stylesheet" href="{%static 'navbar.css'%}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
-        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donor Plasma</title>
+{% load static %}
+<link rel="stylesheet" href="{%static 'simpleCentering.css'%}">
+<link rel="stylesheet" href="{%static 'navbar.css'%}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
-    <style>
-        td,
-        th {
-            color: black;
-            text-align: left;
-            font-size: 25px;
-        }
+<style>
+td,th {
+    color: black;
+    text-align: left;
+    font-size: 25px;
+}
 
-        table {
-            margin-left: auto;
-            margin-right: auto;
-        }
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .test {
-            text-align: center;
-        }
+.test {
+    text-align: center;
+}
 
+button:hover {
+    opacity: 1;
+}
 
-        button:hover {
-            opacity: 1;
-        }
+/* Add a color to the delete button */
+/* Add padding and center-align text to the container */
+/* The Modal (background) */
+.modal {
+    display: none;
+}
 
-        /* Add a color to the delete button */
-
-        /* Add padding and center-align text to the container */
-
-        /* The Modal (background) */
-        .modal {
-            display: none;
-        }
-    </style>
+h1 {
+    padding-top: 5rem;
+    padding-bottom: 10px;
+    text-align: center;
+}
+</style>
 </head>
-
 <body>
-    <h1 style="margin: 20px;">Informasi Pendonor</h1>
-    <hr>
+    <h1>Informasi Pendonor</h1>
     <table class="data" style="width:max-content; border-collapse:initial;">
-
     </table>
-
     <table class="tombol">
         <tr>
             <td><button onclick=ubah() class="btn btn-info">Ubah Data</button></td>
@@ -65,7 +63,6 @@
                     Mendonor</button></td>
         </tr>
     </table>
-
     <div id="batal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -84,7 +81,6 @@
             </div>
         </div>
     </div>
-
     <div id="selesai" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -162,5 +158,4 @@
     });
 
 </script>
-
 </html>
