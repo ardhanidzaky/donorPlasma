@@ -3,7 +3,6 @@ from .forms import CariDonorForm
 from .models import CariDonor
 import json
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http.response import HttpResponse
@@ -42,6 +41,9 @@ def informasicaridonor(request):
     nohp = request.session['nohp']
     goldar = request.session['goldar']
     idnya = CariDonor.objects.filter(nama=nama, NIK=nik).last()
+    if (idnya == None):
+        return redirect("/home/")
+    idnya = idnya.id
     context = {
         'nama': nama,
         'nik': nik,
@@ -50,12 +52,15 @@ def informasicaridonor(request):
         'kota': kota[1:-1],
         'nohp': nohp,
         'goldar': goldar,
-        'idnya': idnya.id
+        'idnya': idnya
     }
     return render(request, 'submit.html', context)
 
 def editdata(request, pk):
-    data = get_object_or_404(CariDonor, id=pk)
+    try:
+        data = CariDonor.objects.get(id=pk)
+    except CariDonor.DoesNotExist:
+        return redirect("/FormCariDonor/")
     edit(pk)
     form = CariDonorForm(instance=data)
     if request.method == 'POST':
@@ -74,7 +79,7 @@ def edit(pk):
 def deletedata(request, pk):
     idnya = CariDonor.objects.filter(id=pk)
     idnya.delete()
-    return redirect("/FormCariDonor/")
+    return redirect("/home/")
 
 @login_required(login_url='/home/login')
 def listcaridonor(request):
