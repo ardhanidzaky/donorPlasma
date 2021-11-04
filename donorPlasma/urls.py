@@ -21,6 +21,7 @@ from listUDD.views import *
 from faq.views import *
 from cariDonor.views import *
 from pendonor.views import *
+from article.views import *
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,8 +31,9 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('FormCariDonor/', include('formCariDonor.urls')),
     path('informasiUDD/', include('listUDD.urls')),
-    path('faq/', include ('faq.urls')),
-    path('pendonor/', include ('pendonor.urls')),
-    path('cari-donor/', include ('cariDonor.urls')),
+    path('faq/', include('faq.urls')),
+    path('pendonor/', include('pendonor.urls')),
+    path('cari-donor/', include('cariDonor.urls')),
+    path('article/', include('article.urls')),
     re_path(r'^$', homePage, name='homePage')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

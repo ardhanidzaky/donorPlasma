@@ -1,0 +1,39 @@
+{% include user.is_authenticated|yesno:"navIn.html,navOut.html"%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%  load static %}
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Add Article</title>
+  </head>
+
+<style>
+  h2{
+      padding-top: 40px;
+      padding-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-family:'Times New Roman', Times, serif;
+      text-transform: uppercase;
+  }
+  div.col{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:large;
+  }
+</style>
+
+<body style="background-color:  #eee;">
+  <br><br>
+  <h2>Add Article</h2>
+  <div class="container">
+    <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+      <div class="col">Judul: {{form.judul}}</div><br>
+      <div class="col">Isi: {{form.isi}}</div><br>
+      <div class="col">Foto: {{form.foto}}</div><br>
+      <center><input class="btn btn-lg btn-primary" type="submit" value="Save"></center>
+    </form>
+  </div>
+</body>
+</html>

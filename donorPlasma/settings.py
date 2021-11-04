@@ -18,11 +18,11 @@ import os
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
-        messages.DEBUG: 'alert-secondary',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.ERROR: 'alert-danger',
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
 }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'faq',
     'listUDD',
     'pendonor',
+    'article'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -157,7 +158,6 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-import dj_database_url
 prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
