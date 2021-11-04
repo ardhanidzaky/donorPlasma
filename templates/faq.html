@@ -1,28 +1,30 @@
-{% include "navIn.html" %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		{% load static %}
 		<link rel="stylesheet" href="{%static 'navbar.css'%}">
-        <link rel="stylesheet" href="{%static 'faq.css' %}" />
-        <link rel="stylesheet" href="{%static 'button.css' %}" />
+    <link rel="stylesheet" href="{%static 'faq.css' %}" />
+    <link rel="stylesheet" href="{%static 'button.css' %}" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
-        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"> 
-        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-        <title>Donor Plasma</title>
-      </head>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <title>Donor Plasma</title>
+  </head>
 	<style>
-	</style>
+    h1 {
+      padding-top: 5rem;
+      padding-bottom: 10px;
+      text-align: center;
+  }
+  </style>
 	<body>
+    {% include user.is_authenticated|yesno:"navIn.html,navOut.html"%}
           {% block content %}
     {% load crispy_forms_tags %}
-
-    <div class='container py-5'>
-        <center><h2>Frequently Ask Question</h2></center>
-    </div>
+    <h1>Frequently Ask Question</h1>
     {% endblock %}
 
     {% for faq in faqs %}

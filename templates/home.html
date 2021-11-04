@@ -1,5 +1,4 @@
 {% include user.is_authenticated|yesno:"navIn.html,navOut.html"%}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,24 @@
     <link rel="icon" type="image/png" href="/static/facivon.png" />
     <title>Donor Plasma</title>
 </head>
+<style>
+    body {
+        background-image: url('/static/bg.png');
+    }
+    h1 {
+        padding-top: 25rem;
+        padding-left: 7rem;
+        font-weight: 100;
+        font-size: 4.8rem;
+    }
+</style>
 <body>
-    <h1>test</h1>
+    <h1>
+        <span class="red">DONOR</span>
+        <br>
+        PLASMA
+        <br>
+        KONVALESEN
+    </h1>
 </body>
 </html>
