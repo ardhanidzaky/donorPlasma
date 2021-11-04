@@ -220,48 +220,15 @@ button:hover{
 	</div>
 	<div class="row">
 	</div>
+  {% load crispy_forms_tags %}
 	<div class="row input-container">
 			<form action="" method="POST">
 		    {% csrf_token %}
-			<div class="col-xs-12">
-				<div class="styled-input wide">
-					<input type="text" id="namaUDD" name="namaUDD" required />
-					<label for="namaUDD">Nama UDD</label>
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="styled-input">
-					<input type="text" id="goldar" name="goldar" required />
-					<label>Golongan Darah yang tersedia</label>
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="styled-input" style="float:right;">
-					<input type="number" id="JumlahStok" name="JumlahStok" required />
-					<label>Stok</label>
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="styled-input" style="float:right;">
-					<input type="text" id="nomorUDD" name="nomorUDD" required />
-					<label>Nomor Telepon</label>
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="styled-input" style="float:left;">
-					<input type="text" id="alamatUDD" name="alamatUDD" required />
-					<label>Alamat</label>
-				</div>
-			</div>
-			<div class="col-xs-12">
-				<div class="btn-lrg submit-btn">
-					<input type="submit" value="Submit">
-				</div>
-
-			</div>
+        {{ form|crispy}}
+        <br>
+        <button type="submit" value="Submit">Submit</button>
 				<button id="foot"><a href="/informasiUDD/">Back</a></button>
 			</form>
-
 	</div>
 </div>
 
