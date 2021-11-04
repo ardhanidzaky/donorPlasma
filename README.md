@@ -7,7 +7,7 @@
 6. Rahadian Panji Ramadhan - 2006473900
 7. Sulthan Afif Althaf - 2006473863
 
-**Link HEROKU:** https://proyeka03.herokuapp.com/
+**Link HEROKU:** https://donorplasma.herokuapp.com/
 
 | Fitur |PIC |
 | -------- | -------- |
