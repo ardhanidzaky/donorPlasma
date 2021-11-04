@@ -1,4 +1,4 @@
-{% include "navIn.html" %}
+{% include user.is_authenticated|yesno:"navIn.html,navOut.html"%}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <style>
