@@ -11,7 +11,7 @@
 
 | Fitur |PIC |
 | -------- | -------- |
-| Home Page | Ralfi |
+| Home Page, User, Login, Logout, Register, Heroku & GitHub | Ralfi |
 | Formulir Pendaftaran Pendonor| Sulthan |
 | Formulir Pendaftaran Pencari Donor| Adira |
 | List UDD terdekat + Contact | Helga |
