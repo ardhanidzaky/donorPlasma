@@ -40,7 +40,7 @@ def data_pendonor():
     return HttpResponse(data,content_type='application/json')
 
 def get_pendonor(request):
-    user_now  =request.user
+    user_now  = 1
     data = pendonor.objects.get(user = user_now)
     response = serializers.serialize('json',[data])
     return HttpResponse(response,content_type = "application/json")
