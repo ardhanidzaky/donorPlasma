@@ -35,12 +35,10 @@ def informasi_pendonor(request):
 
     return render(request,'informasi_pendonor.html',response)
 
-@login_required(login_url='/home/login')
 def data_pendonor():
     data = serializers.serialize('json',pendonor.objects.all())
     return HttpResponse(data,content_type='application/json')
 
-@login_required(login_url='/home/login')
 def get_pendonor(request):
     user_now  =request.user
     data = pendonor.objects.get(user = user_now)
