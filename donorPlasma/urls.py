@@ -25,9 +25,11 @@ from article.views import *
 
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
     path('home/', include('home.urls')),
     path('FormCariDonor/', include('formCariDonor.urls')),
     path('informasiUDD/', include('listUDD.urls')),

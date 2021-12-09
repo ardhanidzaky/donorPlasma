@@ -8,4 +8,5 @@ urlpatterns = [
     path('login', login_request, name='login'),
     path('logout', logout_request, name='logout'),
     path('daftar', daftar, name='daftar'),
+    path('user/', UserRecordView.as_view(), name='users'),
 ]
