@@ -20,7 +20,7 @@ def input_cari_donor(request):
         donor = get_pendonor_json(request)
         donor = json.loads(donor)
         ctx = {"pendonor": donor, "kota": kota, "goldar": goldar}
-        return render(request, 'result-pendonor.html', ctx)
+        return render(request, 'cari-donor-result.html', ctx)
 
     check_prov_kota()
     form = cariDonor(request.POST or None)

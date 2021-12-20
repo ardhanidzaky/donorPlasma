@@ -37,11 +37,11 @@
                 {% for donor in pendonor %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td> {{donor.nama}} </td>
-                        <td> {{donor.tanggal_lahir}} </td>
-                        <td> {{donor.golongan_darah}}{{donor.rhesus}} </td>
-                        <td> {{donor.nomor_hp}} </td>
-                        <td> {{donor.tanggal_terakhir_mendonor}} </td>
+                        <td> {{donor.fields.nama}} </td>
+                        <td> {{donor.fields.tanggal_lahir}} </td>
+                        <td> {{donor.fields.golongan_darah}}{{donor.fields.rhesus}} </td>
+                        <td> {{donor.fields.nomor_hp}} </td>
+                        <td> {{donor.fields.tanggal_terakhir_mendonor}} </td>
                     </tr>
                 {% endfor %}
                 </tbody>
