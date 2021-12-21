@@ -24,8 +24,8 @@ class pendonor(models.Model):
     provinsi = models.ForeignKey(Provinsi, on_delete=models.CASCADE, default="")
     kota = models.ForeignKey(Kota, on_delete=models.CASCADE, default="")
     nomor_hp = models.CharField(max_length=12)
-    bukti_swab_positif = models.FileField(upload_to='documents/', null=True)
-    bukti_swab_negatif = models.FileField(upload_to='documents/', null=True)
+    bukti_swab_positif = models.CharField(max_length=100)
+    bukti_swab_negatif = models.CharField(max_length=100)
     tanggal_sembuh = models.DateField()
     tanggal_terakhir_mendonor = models.DateField()
 
