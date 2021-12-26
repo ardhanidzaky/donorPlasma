@@ -24,3 +24,4 @@ wrapt==1.12.1
 django-crispy-forms==1.13.0
 Pillow==8.4.0
 djangorestframework==3.12.4
+django-cors-headers==3.10.1
