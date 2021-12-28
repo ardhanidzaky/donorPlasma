@@ -7,5 +7,10 @@ urlpatterns = [
     path('EditData/<str:pk>/', editdata, name='EditData'),
     path('DeleteData/<str:pk>/', deletedata, name='DeleteData'),
     path('listcaridonor', listcaridonor, name='listcaridonor'),
-    path('jsonnya', jsonnya, name='json')
+    path('jsonnya', jsonnya, name='json'),
+    path('djr', listt),
+    path('djr/<pk>/', detailcaridonor),
+    path('djr/update/<pk>/', update),
+    path('djr/delete/<pk>/', delete),
+    path('djr/create', create)
 ]

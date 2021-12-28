@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from .forms import CariDonorForm
 from .models import CariDonor
+from cariDonor.models import *
 import json
 from django.http import JsonResponse
+from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http.response import HttpResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response as Resp
+from .serializers import *
 
 def formcaridonor(request):
     form = CariDonorForm(request.POST or None)
@@ -93,3 +98,72 @@ def listcaridonor(request):
 def jsonnya(request):
     data = serializers.serialize('json', CariDonor.objects.all())
     return HttpResponse(data, content_type="application/json")
+
+@api_view(['GET'])
+def listt(request):
+    caridonor = CariDonor.objects.all()
+    data = CrDnr(caridonor, many=True)
+    return Resp(data.data)
+
+@api_view(['GET'])
+def detailcaridonor(request, pk):
+    caridonor = CariDonor.objects.filter(id=pk)
+    data = CrDnr(caridonor, many=True)
+    return Resp(data.data)
+
+@api_view(['POST'])
+def create(request):
+    data = request.data 
+    namaprov = Provinsi.objects.get(nama=data['provinsi'])
+    namakota = Kota.objects.get(id=data['kota'])
+
+    baru = CariDonor.objects.create(
+        nama = data['nama'],
+        NIK = data['NIK'],
+        tanggal_Lahir = data['tanggal_Lahir'],
+        provinsi = namaprov,
+        kota = namakota,
+        # provinsi = data['provinsi'],
+        # kota = data['kota'],
+        nomor_Telepon = data['nomor_Telepon'],
+        golongan_Darah = data['golongan_Darah'],
+    )
+    datanya = CrDnr(baru, many=False)
+    return Resp(datanya.data)
+
+@api_view(['PUT'])
+def update(request, pk):
+    data = request.data 
+    updatenya = CariDonor.objects.get(id=pk)
+    namaprov = Provinsi.objects.get(nama=data['provinsi'])
+    namakota = Kota.objects.get(id=data['kota'])
+    provv = model_to_dict(namaprov)
+    prov = json.dumps(provv) 
+    kotaa = model_to_dict(namakota)
+    kota = json.dumps(kotaa)
+    print(prov)
+    datanya = {
+        'id': pk,
+        'nama': data['nama'],
+        'NIK': data['NIK'],
+        'tanggal_Lahir': data['tanggal_Lahir'],
+        'provinsi': data['provinsi'],
+        'kota': data['kota'],
+        'nomor_Telepon': data['nomor_Telepon'],
+        'golongan_Darah': data['golongan_Darah'],
+    }
+    datanya = CrDnr(updatenya, data=datanya)
+    print("gavalid")
+    if datanya.is_valid():
+        print("VALIDDDDDDDDD")
+        datanya.save()
+    else:
+        print(datanya.errors)
+    # datanya = CrDnr(baru, many=False)
+    return Resp(datanya.data)
+
+@api_view(['DELETE'])
+def delete(request, pk):
+    data = CariDonor.objects.get(id=pk)
+    data.delete()
+    return Resp('Deleted')
