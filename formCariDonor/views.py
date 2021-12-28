@@ -115,7 +115,7 @@ def detailcaridonor(request, pk):
 def create(request):
     data = request.data 
     namaprov = Provinsi.objects.get(nama=data['provinsi'])
-    namakota = Kota.objects.get(id=data['kota'])
+    namakota = Kota.objects.get(nama=data['kota'])
 
     baru = CariDonor.objects.create(
         nama = data['nama'],
@@ -136,7 +136,8 @@ def update(request, pk):
     data = request.data 
     updatenya = CariDonor.objects.get(id=pk)
     namaprov = Provinsi.objects.get(nama=data['provinsi'])
-    namakota = Kota.objects.get(id=data['kota'])
+    namakota = Kota.objects.get(nama=data['kota'])
+    idkota = getattr(namakota, 'id')
     provv = model_to_dict(namaprov)
     prov = json.dumps(provv) 
     kotaa = model_to_dict(namakota)
@@ -148,14 +149,12 @@ def update(request, pk):
         'NIK': data['NIK'],
         'tanggal_Lahir': data['tanggal_Lahir'],
         'provinsi': data['provinsi'],
-        'kota': data['kota'],
+        'kota': idkota,
         'nomor_Telepon': data['nomor_Telepon'],
         'golongan_Darah': data['golongan_Darah'],
     }
     datanya = CrDnr(updatenya, data=datanya)
-    print("gavalid")
     if datanya.is_valid():
-        print("VALIDDDDDDDDD")
         datanya.save()
     else:
         print(datanya.errors)
