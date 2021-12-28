@@ -11,7 +11,7 @@ pilihangoldar = (
 )
 class CariDonor(models.Model):
     nama = models.CharField(max_length=63)
-    NIK = models.PositiveIntegerField(validators=[MaxValueValidator(9999999999999999)])
+    NIK = models.CharField(max_length=100)
     tanggal_Lahir = models.DateField()
     provinsi = models.ForeignKey(Provinsi, on_delete=models.CASCADE, default="")
     kota = models.ForeignKey(Kota, on_delete=models.CASCADE, default="")
