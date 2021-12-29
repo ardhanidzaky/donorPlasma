@@ -12,5 +12,7 @@ urlpatterns = [
     path('djr/<pk>/', detailcaridonor),
     path('djr/update/<pk>/', update),
     path('djr/delete/<pk>/', delete),
-    path('djr/create', create)
+    path('djr/create', create),
+    path('fcdview', FormCariDonorView.as_view()),
+    path('fcdview/<int:pk>/', FormCariDonorDetail.as_view()),
 ]
