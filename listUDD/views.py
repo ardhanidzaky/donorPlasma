@@ -168,6 +168,17 @@ def add_uddA(request):
         goldar_new = body['goldar']
         JumlahStok_new = body['stok']
 
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")   
+
         try: #kiri dari model, kanan dari variabel diatas
             stok = Stok(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
             stok.save()
@@ -188,6 +199,17 @@ def add_uddB(request):
         nomorUDD_new = body['notelp']
         goldar_new = body['goldar']
         JumlahStok_new = body['stok']
+
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")   
 
         try: #kiri dari model, kanan dari variabel diatas
             stokb = StokB(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
@@ -210,6 +232,17 @@ def add_uddO(request):
         goldar_new = body['goldar']
         JumlahStok_new = body['stok']
 
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")   
+
         try: #kiri dari model, kanan dari variabel diatas
             stoko = StokO(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
             stoko.save()
@@ -230,6 +263,17 @@ def add_uddAB(request):
         nomorUDD_new = body['notelp']
         goldar_new = body['goldar']
         JumlahStok_new = body['stok']
+
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")                
 
         try: #kiri dari model, kanan dari variabel diatas
             stokab = StokAB(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
