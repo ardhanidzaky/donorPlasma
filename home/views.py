@@ -1,5 +1,7 @@
-from multiprocessing.sharedctypes import Value
-from django.http import JsonResponse
+import json
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .forms import NewUserForm
 from .serializers import UserSerializer
@@ -27,8 +29,10 @@ def register_request(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
+            print(request.POST)
             return JsonResponse({
                 'msg': 'Success',
+                'test': request.POST,
             })
         else:
             return JsonResponse({
@@ -67,6 +71,40 @@ def logout_request(request):
 @login_required(login_url='/home/login')
 def daftar(request):
     return render(request, 'choices.html')
+
+@csrf_exempt
+def loginFlutter(request):
+    data = json.loads(request.body)
+    username = data['username']
+    password = data['password']
+
+    user = authenticate(username=username, password=password)
+    print(user)
+    if user is not None:
+        response = HttpResponse('success')
+        response.status_code = 200  # sample status code
+        return response
+    else:
+        response = HttpResponse('failed')
+        response.status_code = 400  # sample status code
+        return response
+
+@csrf_exempt
+def registerFlutter(request):
+    data = json.loads(request.body)
+    password1 = data['password1']
+    password2 = data['password2']
+
+    if password1 == password2:
+        form = NewUserForm(data)
+        form.save()
+        response = HttpResponse('success')
+        response.status_code = 200  # sample status code
+        return response
+    else:
+        response = HttpResponse('failed')
+        response.status_code = 400  # sample status code
+        return response
 
 class UserRecordView(APIView):
     """

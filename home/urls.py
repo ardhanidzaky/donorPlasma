@@ -9,4 +9,6 @@ urlpatterns = [
     path('logout', logout_request, name='logout'),
     path('daftar', daftar, name='daftar'),
     path('user/', UserRecordView.as_view(), name='users'),
+    path('loginFlutter', loginFlutter, name='loginFlutter'),
+    path('regFlutter', registerFlutter, name='registerFlutter')
 ]
