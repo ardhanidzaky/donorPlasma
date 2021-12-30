@@ -35,3 +35,18 @@ def json(request):
     faqs = faq.objects.all()
     data = serializers.serialize('json', faq.objects.all())
     return HttpResponse(data, content_type="application/json")
+
+def add_faq(request):
+    if (request.method == "POST"):
+        question = body['question']
+        answer = body["answer"]
+
+        try:
+            faqs = faq(question=question, answer=answer)
+            faqs.save()
+            return HttpResponse("Successful", status=200)
+        except:
+           return HttpResponse("An error occurred", status=400, content_type="text/plain")
+          
+    
+    return HttpResponse("Must use POST Method", status=405, content_type="text/plain")
