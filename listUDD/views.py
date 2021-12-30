@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.core import serializers
 from django.http.response import HttpResponse
 from .models import Stok, StokB, StokAB, StokO
 from .forms import StokForm, StokBForm, StokABForm, StokOForm
+import json
 
 def index(request):
     stocks = Stok.objects.all()
@@ -75,9 +75,6 @@ def add_formsab(request):
             return HttpResponseRedirect("/informasiUDD/")
     else:
         print(form.errors)
-    response = {
-        'form':form
-    }
     context['form'] = form
     return render(request, "forms_ab.html", response)
 
@@ -126,7 +123,13 @@ def edit_card(request):
     return HttpResponseRedirect("/informasiUDD")
 
 
-def json(request):
-    stocks = Stok.objects.all()
-    data = serializers.serialize('json', Stok.objects.all())
-    return HttpResponse(data, content_type="application/json")
+def stock_json(request):
+    
+    response = {
+        'stocks': list(Stok.objects.values()),
+        'stocksb': list(StokB.objects.values()),
+        'stockso': list(StokO.objects.values()),
+        'stocksab': list(StokAB.objects.values()),
+    }
+
+    return HttpResponse(json.dumps(response), content_type="application/json")

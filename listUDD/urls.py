@@ -16,5 +16,5 @@ urlpatterns = [
     path('delete_ab', delete_cardab, name='delete_cardab'),
 
     path('edit_card', edit_card, name='edit_card'),
-    path('json/', json, name = 'json'),
+    path('json/', stock_json, name = 'json'),
 ]
