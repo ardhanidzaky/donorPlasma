@@ -147,27 +147,6 @@ def add_uddA(request):
         goldar_new = body['goldar']
         JumlahStok_new = body['stok']
 
-        try: #kiri dari model, kanan dari variabel diatas
-            stok = Stok(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
-            stok.save()
-            return HttpResponse("Successful", status=200)
-        except Stok.DoesNotExist:
-            print("An error occurred")
-            return HttpResponse("An error occurred", status=400, content_type="text/plain")
-    return HttpResponse("Must use POST Method", status=405, content_type="text/plain")   
-
-@csrf_exempt
-def add_uddA(request):
-    if (request.method == "POST"):
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-
-        namaUDD_new = body['nama']
-        alamatUDD_new = body['alamat']
-        nomorUDD_new = body['notelp']
-        goldar_new = body['goldar']
-        JumlahStok_new = body['stok']
-
         if namaUDD_new == '':
             return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
         if alamatUDD_new == '':
