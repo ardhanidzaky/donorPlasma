@@ -1,15 +1,17 @@
+from django.http import response
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import Article
 from .forms import ArticleForm
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.forms.models import model_to_dict
+import json
 
 
 def index(request):
-    # articles = Article.objects.all()
-    # articles = articles[:3]
-    # return render(request, 'article_index.html', {'articles': articles})
     full_articles = Article.objects.all()
     three_articles = full_articles[:3]
     context = {
@@ -49,3 +51,21 @@ def load_more(request):
         'posts': posts_json,
         'totalResult': totalData
     })
+
+
+@csrf_exempt
+def post_artikel(request):
+    data = json.loads(request.body)
+    form = ArticleForm(data)
+    form.save()
+    response = HttpResponse('success')
+    response.status_code = 200
+    return response
+
+
+@csrf_exempt
+def get_artikel(request):
+    raw = serializers.serialize('python', Article.objects.all())
+    data = [val['fields'] for val in raw]
+    out = json.dumps(data)
+    return HttpResponse(out, content_type="application/json")
