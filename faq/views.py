@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import FAQForm
 from django.core import serializers 
 from django.http.response import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 def index(request):
     faqs = faq.objects.all()
@@ -31,7 +33,25 @@ def delete_question(request):
     return HttpResponseRedirect("/faq")
 
 
-def json(request):
+def json_faq(request):
     faqs = faq.objects.all()
-    data = serializers.serialize('json', faq.objects.all())
+    data = serializers.serialize('json', faqs)
     return HttpResponse(data, content_type="application/json")
+
+@csrf_exempt
+def add_faq(request):
+    if (request.method == "POST"):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        question = body['question']
+        answer = body["answer"]
+
+        try:
+            faqs = faq(question=question, answer=answer)
+            faqs.save()
+            return HttpResponse("Successful", status=200)
+        except Exception :
+           return HttpResponse("An error occurred", status=400, content_type="text/plain")
+          
+    
+    return HttpResponse("Must use POST Method", status=405, content_type="text/plain")

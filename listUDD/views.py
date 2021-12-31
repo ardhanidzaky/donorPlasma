@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
 from .models import Stok, StokB, StokAB, StokO
 from .forms import StokForm, StokBForm, StokABForm, StokOForm
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 def index(request):
@@ -133,3 +134,131 @@ def stock_json(request):
     }
 
     return HttpResponse(json.dumps(response), content_type="application/json")
+
+@csrf_exempt
+def add_uddA(request):
+    if (request.method == "POST"):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
+        namaUDD_new = body['nama']
+        alamatUDD_new = body['alamat']
+        nomorUDD_new = body['notelp']
+        goldar_new = body['goldar']
+        JumlahStok_new = body['stok']
+
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")   
+
+        try: #kiri dari model, kanan dari variabel diatas
+            stok = Stok(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
+            stok.save()
+            return HttpResponse("Successful", status=200)
+        except Stok.DoesNotExist:
+            print("An error occurred")
+            return HttpResponse("An error occurred", status=400, content_type="text/plain")
+    return HttpResponse("Must use POST Method", status=405, content_type="text/plain") 
+
+@csrf_exempt
+def add_uddB(request):
+    if (request.method == "POST"):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
+        namaUDD_new = body['nama']
+        alamatUDD_new = body['alamat']
+        nomorUDD_new = body['notelp']
+        goldar_new = body['goldar']
+        JumlahStok_new = body['stok']
+
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")   
+
+        try: #kiri dari model, kanan dari variabel diatas
+            stokb = StokB(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
+            stokb.save()
+            return HttpResponse("Successful", status=200)
+        except StokB.DoesNotExist:
+            print("An error occurred")
+            return HttpResponse("An error occurred", status=400, content_type="text/plain")
+    return HttpResponse("Must use POST Method", status=405, content_type="text/plain") 
+
+@csrf_exempt
+def add_uddO(request):
+    if (request.method == "POST"):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
+        namaUDD_new = body['nama']
+        alamatUDD_new = body['alamat']
+        nomorUDD_new = body['notelp']
+        goldar_new = body['goldar']
+        JumlahStok_new = body['stok']
+
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")   
+
+        try: #kiri dari model, kanan dari variabel diatas
+            stoko = StokO(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
+            stoko.save()
+            return HttpResponse("Successful", status=200)
+        except StokO.DoesNotExist:
+            print("An error occurred")
+            return HttpResponse("An error occurred", status=400, content_type="text/plain")
+    return HttpResponse("Must use POST Method", status=405, content_type="text/plain") 
+
+@csrf_exempt
+def add_uddAB(request):
+    if (request.method == "POST"):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
+        namaUDD_new = body['nama']
+        alamatUDD_new = body['alamat']
+        nomorUDD_new = body['notelp']
+        goldar_new = body['goldar']
+        JumlahStok_new = body['stok']
+
+        if namaUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if alamatUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if nomorUDD_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if goldar_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")
+        if JumlahStok_new == '':
+            return HttpResponse("Mohon mengisi kolom ini", status=400, content_type="text/plain")                
+
+        try: #kiri dari model, kanan dari variabel diatas
+            stokab = StokAB(namaUDD=namaUDD_new, alamatUDD=alamatUDD_new, nomorUDD=nomorUDD_new, goldar=goldar_new, JumlahStok=JumlahStok_new)
+            stokab.save()
+            return HttpResponse("Successful", status=200)
+        except StokAB.DoesNotExist:
+            print("An error occurred")
+            return HttpResponse("An error occurred", status=400, content_type="text/plain")
+    return HttpResponse("Must use POST Method", status=405, content_type="text/plain")         
